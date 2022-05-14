@@ -3,7 +3,7 @@ import { MenuItem } from './MenuItem';
 import React from 'react';
 import { MenuModel } from '../../models/MenuModel';
 
-export function Menu() {
+export function Menus() {
   const menuItems: MenuModel[] = [MenuModel.home(), MenuModel.search(), MenuModel.library()];
 
   return (

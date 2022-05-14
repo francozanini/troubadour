@@ -1,5 +1,5 @@
 import React from 'react';
-import { Menu } from '../Menu/Menu';
+import { Menus } from '../Menu/Menus';
 import { css } from '@emotion/css';
 import { Divider } from '@chakra-ui/react';
 import Playlist from '../../models/Playlist';
@@ -24,7 +24,7 @@ export function Sidenav() {
         background-color: black;
       `}
     >
-      <Menu />
+      <Menus />
       <Divider />
       <Playlists playlists={playlists} />
     </nav>
