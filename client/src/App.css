@@ -59,7 +59,14 @@ strong {
     font-weight: bold;
 }
 
+
 body {
     font-family: "Roboto", monospace;
-    color: #ece4e6;
+    color: gray;
+}
+
+hr {
+    border-top-width: thin;
+    border-top-color: rgb(179, 179, 179);
+    width: 100%;
 }
