@@ -1,17 +1,16 @@
 import React from 'react';
 import './App.css';
-import './Sidenav.css';
-import { Sidenav } from './Sidenav';
+import { Sidenav } from './components/Sidenav/Sidenav';
 
 class Playlist {
   private title: string;
 
-  public static named(title: string): Playlist {
-    return new Playlist(title);
-  }
-
   constructor(title: string) {
     this.title = title;
+  }
+
+  public static named(title: string): Playlist {
+    return new Playlist(title);
   }
 }
 
