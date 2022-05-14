@@ -59,14 +59,17 @@ strong {
     font-weight: bold;
 }
 
+:root {
+    --light-gray: rgb(179, 179, 179);
+}
 
 body {
     font-family: "Roboto", monospace;
-    color: gray;
+    color: var(--light-gray);
 }
 
 hr {
     border-top-width: thin;
-    border-top-color: rgb(179, 179, 179);
+    border-top-color: var(--light-gray);
     width: 100%;
 }
