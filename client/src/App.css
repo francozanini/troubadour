@@ -63,13 +63,17 @@ strong {
     --light-gray: rgb(179, 179, 179);
 }
 
-html, body {
+body {
     font-family: "Roboto", monospace;
     color: var(--light-gray);
+}
+
+html {
     max-height: 100%;
     max-width: 100%;
     overflow: hidden
 }
+
 
 hr {
     border-top-width: thin;

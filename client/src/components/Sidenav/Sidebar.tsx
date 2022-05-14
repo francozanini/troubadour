@@ -5,7 +5,7 @@ import { Divider } from '@chakra-ui/react';
 import Playlist from '../../models/Playlist';
 import { Playlists } from './Playlists';
 
-export function Sidenav() {
+export function Sidebar() {
   const playlists: Playlist[] = [
     Playlist.named('happiness of sadness | POST-PUNK/LOFI/DREAMPOP/COLDWAVE/DARKWAVE'),
     Playlist.named('INDIE SLEAZY'),
@@ -18,10 +18,8 @@ export function Sidenav() {
         display: flex;
         flex-direction: column;
         padding: 1rem;
-        width: 12%;
-        max-width: 20%;
-        height: 100vw;
         background-color: black;
+        grid-area: sidebar;
       `}
     >
       <Menus />
