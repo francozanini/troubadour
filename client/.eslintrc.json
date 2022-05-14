@@ -4,6 +4,7 @@
         "es2021": true
     },
     "extends": [
+        "plugin:import/recommended",
         "plugin:react/recommended",
         "airbnb-typescript"
     ],
