@@ -44,6 +44,27 @@ class PlaylistTest {
     }
 
     @Test
+    public void canRenamePlaylist() {
+        var playlist = Playlist.named(PLAYLIST_NAME);
+        String anotherName = "another name";
+        playlist.rename(anotherName);
+        assertThat(playlist.isNamed(anotherName)).isTrue();
+    }
+
+    @Test
+    public void cannotCreatePlaylistWithEmptyName() {
+        var ex = assertThrows(RuntimeException.class, () -> Playlist.named(""));
+        assertThat(ex.getMessage()).isEqualTo(Playlist.NAME_CANNOT_BE_EMPTY);
+    }
+
+    @Test
+    public void cannotRenameToEmptyName() {
+        var playlist = Playlist.named(PLAYLIST_NAME);
+        var ex = assertThrows(RuntimeException.class, () -> playlist.rename(""));
+        assertThat(ex.getMessage()).isEqualTo(Playlist.NAME_CANNOT_BE_EMPTY);
+    }
+
+    @Test
     public void canPlaySongsFromTheBeginningOfPlaylist() {
         var playlist = Playlist.named(PLAYLIST_NAME);
         playlist.addSongs("another songName", SONG_NAME);
