@@ -87,7 +87,7 @@ class PlaylistTest {
     }
 
     @Test
-    public void GivenPlayCommand_WhenSongIsPlaying_ItSwitchesToNewSong() {
+    public void givenPlayCommand_whenSongIsPlaying_ThenSwitchToNewSong() {
         var playlist = Playlist.named(PLAYLIST_NAME);
         playlist.addSongs(ANOTHER_SONG_NAME, SONG_NAME);
         playlist.play(ANOTHER_SONG_NAME);
