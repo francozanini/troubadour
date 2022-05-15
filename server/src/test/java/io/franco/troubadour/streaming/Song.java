@@ -1,5 +1,7 @@
 package io.franco.troubadour.streaming;
 
+import java.util.Objects;
+
 public class Song {
 
     private final String name;
@@ -28,5 +30,9 @@ public class Song {
 
     public void pause() {
         isPlaying = false;
+    }
+
+    public boolean isNamed(Song song) {
+        return Objects.equals(this.name, song.name);
     }
 }

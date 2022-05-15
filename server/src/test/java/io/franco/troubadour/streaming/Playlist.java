@@ -97,9 +97,26 @@ public class Playlist {
     }
 
     public void playPrevious() {
+        if (songPlaying().isNamed(songs.get(0))) {
+            pause();
+            play();
+            return;
+        }
+
         int indexOfSongPlaying = songs.indexOf(songPlaying());
         pause();
         songs.get(indexOfSongPlaying - 1).play();
     }
 
+    public int progress() {
+        return 0;
+    }
+
+    public void playNext() {
+        int indexOfSongPlaying = songs.indexOf(songPlaying());
+        if (isPlaying()) {
+            pause();
+        }
+        songs.get(indexOfSongPlaying + 1).play();
+    }
 }
