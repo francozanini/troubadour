@@ -11,7 +11,7 @@ class SongTest {
     @Test
     public void songCreatesWithName() {
         Song song = Song.named(songName);
-        assertThat(song.hasName(songName.toUpperCase())).isTrue();
+        assertThat(song.isNamed(songName.toUpperCase())).isTrue();
     }
 
     @Test
@@ -23,7 +23,7 @@ class SongTest {
     @Test
     public void songComparesNameLowerCase() {
         Song song = Song.named(songName);
-        assertThat(song.hasName("name that isn't")).isFalse();
+        assertThat(song.isNamed("name that isn't")).isFalse();
     }
 
     @Test

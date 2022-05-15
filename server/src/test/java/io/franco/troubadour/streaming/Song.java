@@ -14,7 +14,7 @@ public class Song {
         return new Song(songName);
     }
 
-    public boolean hasName(String nameToCompare) {
+    public boolean isNamed(String nameToCompare) {
         return this.name.equalsIgnoreCase(nameToCompare);
     }
 
