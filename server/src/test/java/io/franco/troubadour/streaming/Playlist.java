@@ -1,7 +1,7 @@
 package io.franco.troubadour.streaming;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Playlist {
 
@@ -11,7 +11,7 @@ public class Playlist {
     private static final String NO_SONG_PLAYING = "No song is being played";
     private static final String SONG_NOT_FOUND = "Song is not on the playlist";
     private String name;
-    private final Set<Song> songs = new HashSet<>();
+    private final List<Song> songs = new ArrayList<>();
 
     public Playlist(String name) {
         validatePlaylistName(name);
@@ -55,7 +55,7 @@ public class Playlist {
     }
 
     public boolean isPlaying() {
-        return true;
+        return songs.stream().anyMatch(Song::isPlaying);
     }
 
     public Song songPlaying() {
@@ -75,8 +75,14 @@ public class Playlist {
     }
 
     public void play(String songNameToPlay) {
-        songs.forEach(Song::pause);
+        pause();
         songNamed(songNameToPlay).play();
+    }
+
+    public void pause() {
+        if (isPlaying()) {
+            songPlaying().pause();
+        }
     }
 
     void addSongs(String... songNames) {
@@ -89,4 +95,11 @@ public class Playlist {
         validatePlaylistName(nameToChangeTo);
         name = nameToChangeTo;
     }
+
+    public void playPrevious() {
+        int indexOfSongPlaying = songs.indexOf(songPlaying());
+        pause();
+        songs.get(indexOfSongPlaying - 1).play();
+    }
+
 }

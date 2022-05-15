@@ -67,12 +67,12 @@ class PlaylistTest {
     @Test
     public void canPlaySongsFromTheBeginningOfPlaylist() {
         var playlist = Playlist.named(PLAYLIST_NAME);
-        playlist.addSongs("another songName", SONG_NAME);
+        playlist.addSongs(ANOTHER_SONG_NAME, SONG_NAME);
 
         playlist.play();
 
         assertThat(playlist.isPlaying()).isTrue();
-        assertThat(playlist.songPlaying()).isEqualTo(playlist.songNamed(SONG_NAME));
+        assertThat(playlist.songPlaying()).isEqualTo(playlist.songNamed(ANOTHER_SONG_NAME));
     }
 
     @Test
@@ -96,6 +96,30 @@ class PlaylistTest {
 
         assertThat(playlist.songPlaying()).isEqualTo(playlist.songNamed(SONG_NAME));
         assertThat(playlist.songNamed(ANOTHER_SONG_NAME).isPlaying()).isFalse();
+    }
+
+    @Test
+    public void canPausePlaylistWhenSongIsPlaying() {
+        var playlist = Playlist.named(PLAYLIST_NAME);
+        playlist.addSong(SONG_NAME);
+
+        playlist.play();
+        playlist.pause();
+
+        assertThat(playlist.isPlaying()).isFalse();
+    }
+
+
+    @Test
+    public void canSwitchToPreviousSong_WhenSongIsPlayingAnd_TheresSongBefore() {
+        var playlist = Playlist.named(PLAYLIST_NAME);
+        playlist.addSongs(ANOTHER_SONG_NAME, SONG_NAME);
+
+        playlist.play(SONG_NAME);
+        playlist.playPrevious();
+
+        assertThat(playlist.songPlaying()).isEqualTo(playlist.songNamed(ANOTHER_SONG_NAME));
+        assertThat(playlist.songNamed(SONG_NAME).isPlaying()).isFalse();
     }
 
 }
