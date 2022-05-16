@@ -13,7 +13,7 @@ public class Playlist {
     private String name;
     private final List<Song> songs = new ArrayList<>();
 
-    public Playlist(String name) {
+    private Playlist(String name) {
         validatePlaylistName(name);
 
         this.name = name;
@@ -38,7 +38,7 @@ public class Playlist {
             throw new RuntimeException(ALREADY_CONTAINS_SONG);
         }
 
-        songs.add(new Song(songNameToAdd));
+        songs.add(Song.named(songNameToAdd));
     }
 
     public boolean hasSong(String songName) {
@@ -108,7 +108,7 @@ public class Playlist {
         songs.get(indexOfSongPlaying - 1).play();
     }
 
-    public int progress() {
+    public int currentSongProgress() {
         return 0;
     }
 

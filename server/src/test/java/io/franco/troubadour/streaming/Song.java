@@ -7,7 +7,7 @@ public class Song {
     private final String name;
     private boolean isPlaying;
 
-    public Song(String name) {
+    private Song(String name) {
         this.name = name;
         this.isPlaying = false;
     }

@@ -131,7 +131,7 @@ class PlaylistTest {
         playlist.playPrevious();
 
         assertThat(playlist.songPlaying()).isEqualTo(playlist.songNamed(SONG_NAME));
-        assertThat(playlist.progress()).isEqualTo(0);
+        assertThat(playlist.currentSongProgress()).isEqualTo(0);
     }
 
     @Test
