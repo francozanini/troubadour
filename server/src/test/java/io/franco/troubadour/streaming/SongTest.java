@@ -1,5 +1,6 @@
 package io.franco.troubadour.streaming;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -13,6 +14,19 @@ class SongTest {
         Song song = Song.named(songName);
         assertThat(song.isNamed(songName.toUpperCase())).isTrue();
     }
+
+    @Test
+    public void canNotCreateSongWithEmptyName() {
+        var be = Assertions.assertThrows(RuntimeException.class, () -> Song.named(""));
+        assertThat(be.getMessage()).isEqualTo(Song.CAN_NOT_CREATE_UNNAMED_SONG);
+    }
+
+    @Test
+    public void canNotCreateSongWithoutName() {
+        var be = Assertions.assertThrows(RuntimeException.class, () -> Song.named(null));
+        assertThat(be.getMessage()).isEqualTo(Song.CAN_NOT_CREATE_UNNAMED_SONG);
+    }
+
 
     @Test
     public void newSongIsNotPlaying() {

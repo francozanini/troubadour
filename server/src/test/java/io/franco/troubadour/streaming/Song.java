@@ -4,12 +4,19 @@ import java.util.Objects;
 
 public class Song {
 
+    public static final String CAN_NOT_CREATE_UNNAMED_SONG = "Song must have a name";
     private final String name;
     private boolean isPlaying;
 
     private Song(String name) {
+        assertNameNotEmpty(name);
+
         this.name = name;
         this.isPlaying = false;
+    }
+
+    private void assertNameNotEmpty(String name) {
+        if (name == null || name.isEmpty()) throw new RuntimeException(CAN_NOT_CREATE_UNNAMED_SONG);
     }
 
     public static Song named(String songName) {
